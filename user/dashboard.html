@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Malbok Dashboard</title>
+    <script type="module" src="/js/user/dashboard.mjs" defer></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 p-6">
+    <div class="max-w-md mx-auto bg-white p-6 rounded shadow">
+        <h1 class="text-2xl font-bold mb-4">Add Car Measurements</h1>
+
+
+        <form id="car-form" class="space-y-4">
+            <label for="roofboxes">Takboks:</label>
+            <select id="roofboxes" name="roofboxes" required class="w-full p-2 border rounded">
+                <option value="SummitTA">Summit T A-variant</option>
+                <option value="SummitTB">Summit T B-variant</option>
+                <option value="SummitXLTA">Summit XLT A-variant</option>
+                <option value="SummitXLTB">Summit XLT B-variant</option>
+                <option value="PremiumXLTA">Premium XLT A-variant</option>
+                <option value="PremiumXLTB">Premium XLT B-variant</option>
+            </select>
+            <label for="make">Bil:</label>
+            <input id="make" type="text" placeholder="Car Make (e.g., Audi, Volvo)" required class="w-full p-2 mb-2 border rounded" />
+            <label for="model">Modell:</label>
+            <input id="model" type="text" placeholder="Model (e.g., Etron, EX90)" required class="w-full p-2 mb-2 border rounded" />
+            <label for="year">Års modell:</label>
+            <input id="year" type="number" placeholder="Year (e.g., 2024)" required class="w-full p-2 mb-2 border rounded" />
+            <label for="takfeste">Takfeste:</label>
+            <input id="takfeste" type="text" placeholder="Flushrails, Faste Festepunkter..." required class="w-full p-2 mb-2 border rounded" />
+            <label for="cc">CC:</label>
+            <input id="cc" type="number" placeholder="750" class="w-full p-2 mb-2 border rounded" />
+            <label for="CB">CB:</label>
+            <input id="cb" type="number" placeholder="600" class="w-full p-2 mb-2 border rounded" />
+            <label for="front">Mal Front:</label>
+            <input id="front" type="text" placeholder="10 med Fot" required class="w-full p-2 mb-2 border rounded" />
+            <label for="bak">Mal Bak:</label>
+            <input id="bak" type="text" placeholder="20 med Fot" required class="w-full p-2 mb-2 border rounded" />
+            <button type="submit" class="bg-blue-600 text-white p-2 w-full rounded">Add Measurements</button>
+        </form>
+
+        <p id="form-message" class="mt-4 text-sm"></p>
+    </div>
+    
+
+</body>
+</html>
