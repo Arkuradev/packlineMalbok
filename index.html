@@ -1,11 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script type="module" src="/js/index.mjs"></script>
     <title>Document</title>
-</head>
-<body>
-    
-</body>
+  </head>
+  <body>
+    <div class="max-w-xl mx-auto p-4">
+      <h1 class="text-2xl font-bold mb-4">Finn Takboks Mal:</h1>
+
+      <form id="car-search-form" class="space-y-4 mb-6">
+        <select id="make-select" required class="w-full p-2 border rounded">
+          <option value="">Velg bilmerke</option>
+        </select>
+
+        <select id="model-select" required class="w-full p-2 border rounded">
+          <option value="">Velg bilmodell</option>
+        </select>
+      </form>
+      <div id="car-list" class="space-y-4"></div>
+    </div>
+  </body>
 </html>
