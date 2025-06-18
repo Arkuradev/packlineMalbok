@@ -62,7 +62,7 @@ modelSelect.addEventListener("change", async () => {
   carList.innerHTML = "";
 
   if (error || !data.length) {
-    carList.innerHTML = `<p class="text-red-500">Ingen maler funners for ${make} ${model}</p>`;
+    carList.innerHTML = `<p class="text-red-500">Ingen maler funnet for ${make} ${model}</p>`;
     return;
   }
 

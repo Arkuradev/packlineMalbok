@@ -1,20 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Packline Malbok</title>
     <script src="/js/user/login.mjs" type="module"></script>
+    <script src="/js/checkLogin.mjs" type="module"></script>
     <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body>
-    <!-- login.html -->
-<form id="login-form" class="max-w-sm mx-auto mt-10 p-4 border rounded shadow">
-  <h2 class="text-xl font-bold mb-4">Login</h2>
-  <input id="email" type="email" placeholder="Email" required class="w-full mb-3 p-2 border rounded" />
-  <input id="password" type="password" placeholder="Password" required class="w-full mb-3 p-2 border rounded" />
-  <button type="submit" class="bg-blue-600 text-white w-full p-2 rounded">Login</button>
-  <p id="error-message" class="text-red-500 mt-2"></p>
-</form>
-</body>
+  </head>
+  <body>
+    <header>
+      <nav class="bg-white shadow mb-6">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="flex justify-between h-16">
+            <div class="flex items-center space-x-6">
+              <a
+                href="../index.html"
+                class="text-lg font-semibold text-gray-800 hover:text-blue-600"
+                >Home</a
+              >
+              <a
+                href="../user/dashboard.html"
+                class="text-gray-700 hover:text-blue-600 hidden"
+                id="dashboard-link"
+                >Dashboard</a
+              >
+            </div>
+            <div class="flex items-center">
+              <a
+                href="../auth/login.html"
+                class="text-gray-700 hover:text-blue-600"
+                id="login-link"
+                >Login</a
+              >
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <form
+      id="login-form"
+      class="max-w-sm mx-auto mt-10 p-4 border rounded shadow"
+    >
+      <h2 class="text-xl font-bold mb-4">Login</h2>
+      <input
+        id="email"
+        type="email"
+        placeholder="Email"
+        required
+        class="w-full mb-3 p-2 border rounded"
+      />
+      <input
+        id="password"
+        type="password"
+        placeholder="Password"
+        required
+        class="w-full mb-3 p-2 border rounded"
+      />
+      <button type="submit" class="bg-blue-600 text-white w-full p-2 rounded">
+        Login
+      </button>
+      <p id="error-message" class="text-red-500 mt-2"></p>
+    </form>
+  </body>
 </html>

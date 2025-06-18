@@ -4,15 +4,39 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script type="module" src="/js/index.mjs"></script>
+    <script src="/js/checkLogin.mjs" type="module"></script>
     <link rel="stylesheet" href="/dist/styles.css" />
     <link rel="icon" typoe="image/x-icon" href="/images/favicon.png" />
     <title>Document</title>
   </head>
   <body>
     <header>
-      <nav>
-        <a href="/user/dashboard.html" class="font-bold">Legg til mal</a>
-        <a href="/auth/login.html" class="font-bold">Logg ut</a>
+      <nav class="bg-white shadow mb-6">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="flex justify-between h-16">
+            <div class="flex items-center space-x-6">
+              <a
+                href="index.html"
+                class="text-lg font-semibold text-gray-800 hover:text-blue-600"
+                >Home</a
+              >
+              <a
+                href="user/dashboard.html"
+                class="text-gray-700 hover:text-blue-600 hidden"
+                id="dashboard-link"
+                >Dashboard</a
+              >
+            </div>
+            <div class="flex items-center">
+              <a
+                href="auth/login.html"
+                class="text-gray-700 hover:text-blue-600"
+                id="login-link"
+                >Login</a
+              >
+            </div>
+          </div>
+        </div>
       </nav>
     </header>
     <div class="max-w-xl mx-auto p-4">
