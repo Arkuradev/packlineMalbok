@@ -66,6 +66,55 @@ modelSelect.addEventListener("change", async () => {
     return;
   }
 
+  const session = (await supabase.auth.getSession()).data.session;
+
+  data.forEach((car) => {
+    const item = document.createElement("div");
+    item.className = "relative bg-white p-4 border rounded shadow";
+
+    const infoText = `
+Bilmerke: ${car.make}
+Modell: ${car.model}
+Takboks: ${car.roofbox || "N/A"}
+Takfeste: ${car.takfeste || "N/A"}
+CC: ${car.cc || "N/A"}
+CB: ${car.cb || "N/A"}
+Front: ${car.front || "N/A"}
+Bak: ${car.bak || "N/A"}
+Mal nummer: ${car.id}`.trim();
+
+    item.innerHTML = `
+    <a href="measurements.html?id=${car.id}" class="block mb-2 hover:underline">
+      <p><strong>${car.make}</strong> ${car.model} (${car.year || ""})</p>
+      <p class="text-sm text-gray-600">Takboks: ${car.roofbox || ""}</p>
+      <p class="text-sm text-gray-600">Takfeste: ${car.takfeste || "N/A"}</p>
+      <p class="text-sm text-gray-600">CC: ${car.cc || "N/A"}</p>
+      <p class="text-sm text-gray-600">CB: ${car.cb || "N/A"}</p>
+      <p class="text-sm text-gray-600">Front: ${car.front || "N/A"}</p>
+      <p class="text-sm text-gray-600">Bak: ${car.bak || "N/A"}</p>
+      <p class="text-sm text-gray-600">Mal nummer: ${car.id}</p>
+    </a>
+
+    <button class="copy-btn absolute bg-gray-600 hover:bg-gray-700 rounded py-2 px-4 text-white top-2 right-2 text-sm" data-info="${infoText.replaceAll(
+      '"',
+      "&quot;"
+    )}">Kopier</button>
+
+    ${
+      session
+        ? `<div class="mt-4 flex gap-4">
+             <button class="edit-btn text-yellow-600 hover:underline" data-id="${car.id}">Rediger</button>
+             <button class="delete-btn text-red-600 hover:underline" data-id="${car.id}">Slett</button>
+           </div>`
+        : ""
+    }
+  `;
+
+    carList.appendChild(item);
+  });
+
+  /*
+
   data.forEach((car) => {
     const item = document.createElement("div");
     // item.href = `measurements.html?id=${car.id}`;
@@ -99,6 +148,34 @@ modelSelect.addEventListener("change", async () => {
   `;
 
     carList.appendChild(item);
+  }); */
+
+  document.querySelectorAll(".delete-btn").forEach((btn) => {
+    btn.addEventListener("click", async () => {
+      const id = btn.dataset.id;
+      const confirmDelete = confirm(
+        "Er du sikker på at du vil slette denne malen?"
+      );
+      if (!confirmDelete) return;
+
+      const { error } = await supabase.from("cars").delete().eq("id", id);
+
+      if (error) {
+        alert(`Feil ved sletting av mal: ${error.message}`);
+        return;
+      } else {
+        alert("Mal slettet!");
+        btn.closest("div").remove();
+        window.location.reload();
+      }
+    });
+  });
+
+  document.querySelectorAll(".edit-btn").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const id = btn.dataset.id;
+      window.location.href = `edit.html?id=${id}`;
+    }); // NOT FINISHED!
   });
 
   document.querySelectorAll(".copy-btn").forEach((button) => {
