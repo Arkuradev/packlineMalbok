@@ -14,7 +14,7 @@ const loginLink = document.querySelector("#login-link");
 const dashboardLink = document.querySelector("#dashboard-link");
 
 if (session) {
-  loginLink.textContent = "Logout";
+  loginLink.textContent = "Logg ut";
   loginLink.href = "#";
   dashboardLink.classList.remove("hidden");
 
