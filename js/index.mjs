@@ -66,6 +66,7 @@ modelSelect.addEventListener("change", async () => {
     return;
   }
 
+  
   const session = (await supabase.auth.getSession()).data.session;
 
   data.forEach((car) => {
@@ -73,15 +74,15 @@ modelSelect.addEventListener("change", async () => {
     item.className = "relative bg-white p-4 border rounded shadow";
 
     const infoText = `
-Bilmerke: ${car.make}
-Modell: ${car.model}
-Takboks: ${car.roofbox || "N/A"}
-Takfeste: ${car.takfeste || "N/A"}
-CC: ${car.cc || "N/A"}
-CB: ${car.cb || "N/A"}
+${car.make}
+${car.model}
+${car.roofbox || "N/A"}
+${car.cc || "N/A"} / ${car.cb || "N/A"}
 Front: ${car.front || "N/A"}
 Bak: ${car.bak || "N/A"}
 Mal nummer: ${car.id}`.trim();
+
+
 
     item.innerHTML = `
     <a href="measurements.html?id=${car.id}" class="block mb-2 hover:underline">
@@ -94,6 +95,15 @@ Mal nummer: ${car.id}`.trim();
       <p class="text-sm text-gray-600">Bak: ${car.bak || "N/A"}</p>
       <p class="text-sm text-gray-600">Mal nummer: ${car.id}</p>
     </a>
+
+    <div class="mt-2">
+    <label class="text-sm flex items-center gap-2">
+    <input type="checkbox" class="paint-toggle">
+    Lakkeres?
+    </label>
+    <input type="text" placeholder="Fargekode" 
+    class="paint-code hidden mt-1 p-2 border rounded w-full text-sm" />
+    </div>
 
     <button class="copy-btn absolute bg-gray-600 hover:bg-gray-700 rounded py-2 px-4 text-white top-2 right-2 text-sm" data-info="${infoText.replaceAll(
       '"',
@@ -111,44 +121,14 @@ Mal nummer: ${car.id}`.trim();
   `;
 
     carList.appendChild(item);
+
+    item.querySelector(".paint-toggle").addEventListener("change", (e) => {
+    const input = item.querySelector(".paint-code");
+    input.classList.toggle("hidden", !e.target.checked);
+  })
+
   });
 
-  /*
-
-  data.forEach((car) => {
-    const item = document.createElement("div");
-    // item.href = `measurements.html?id=${car.id}`;
-    item.className = "relative bg-white p-4 border rounded shadow";
-
-    const infoText = `
-    Bilmerke: ${car.make}
-    Modell: ${car.model}
-    Takboks: ${car.roofbox || "N/A"}
-    Takfeste: ${car.takfeste || "N/A"}
-    CC: ${car.cc || "N/A"}
-    CB: ${car.cb || "N/A"}
-    Front: ${car.front || "N/A"}
-    Bak: ${car.bak || "N/A"}
-    Mal nummer: ${car.id}`.trim();
-
-    item.innerHTML = `
-    <a href="measurements.html?id=${car.id}" class="block mb-2 hover:underline">
-    <p><strong>${car.make}</strong> ${car.model} (${car.year || ""}</p>
-    <p class="text-sm text-gray-600">Takboks: ${car.roofbox || ""}</p>
-    <p class="text-sm text-gray-600">Takfeste: ${car.takfeste || "N/A"}</p>
-    <p class="text-sm text-gray-600">CC: ${car.cc || "N/A"}</p>
-    <p class="text-sm text-gray-600">CB: ${car.cb || "N/A"}</p>
-    <p class="text-sm text-gray-600">Front: ${car.front || "N/A"}</p>
-    <p class="text-sm text-gray-600">Bak: ${car.bak || "N/A"}</p>
-    <p class="text-sm text-gray-600">Mal nummer: ${car.id}</p></a>
-    <button class="copy-btn absolute bg-gray-600 hover:bg-gray-700 rounded py-2 px-4 text-white top-2 right-2 text-sm" data-info="${infoText.replaceAll(
-      '"',
-      "&quot;"
-    )}">Kopier</button>
-  `;
-
-    carList.appendChild(item);
-  }); */
 
   document.querySelectorAll(".delete-btn").forEach((btn) => {
     btn.addEventListener("click", async () => {
@@ -179,27 +159,57 @@ Mal nummer: ${car.id}`.trim();
   });
 
   document.querySelectorAll(".copy-btn").forEach((button) => {
-    button.addEventListener("click", async (e) => {
-      e.preventDefault();
-      e.stopPropagation();
+  button.addEventListener("click", async (e) => {
+    e.preventDefault();
+    e.stopPropagation();
 
-      const info = button.getAttribute("data-info");
+    const card = button.closest("div");
 
-      try {
-        await navigator.clipboard.writeText(info);
-        button.textContent = "Kopiert! ✅";
-        setTimeout(() => {
-          button.textContent = "Kopier";
-        }, 2000);
-      } catch (err) {
-        console.error("Copy failed:", err);
-        button.textContent = "Feil ved kopiering!";
-        setTimeout(() => {
-          button.textContent = "Kopier";
-        }, 2000);
-      }
-    });
+    const make = card.querySelector("strong")?.textContent?.trim() || "N/A";
+    const details = card.querySelectorAll("p");
+
+    const model = details[0]?.textContent?.replace(`${make} `, "") || "N/A";
+    const roofbox = details[1]?.textContent?.split(":")[1]?.trim() || "N/A";
+    const cc = details[3]?.textContent?.split(":")[1]?.trim() || "N/A";
+    const cb = details[4]?.textContent?.split(":")[1]?.trim() || "N/A";
+    const front = details[5]?.textContent?.split(":")[1]?.trim() || "N/A";
+    const bak = details[6]?.textContent?.split(":")[1]?.trim() || "N/A";
+    const id = details[7]?.textContent?.split(":")[1]?.trim() || "N/A";
+
+    const paintInput = card.querySelector(".paint-code");
+    const paintCode =
+      paintInput && !paintInput.classList.contains("hidden")
+        ? paintInput.value.trim()
+        : null;
+
+    let infoText = `
+${make}
+${model}
+${roofbox}
+${cc} / ${cb}
+Front: ${front}
+Bak: ${bak}
+Mal nummer: ${id}
+`.trim();
+
+    if (paintCode) {
+      infoText += `\nFargekode: ${paintCode}`;
+    }
+
+    try {
+      await navigator.clipboard.writeText(infoText);
+      button.textContent = "Kopiert! ✅";
+      setTimeout(() => {
+        button.textContent = "Kopier";
+      }, 2000);
+    } catch (err) {
+      console.error("Copy failed:", err);
+      button.textContent = "Feil ved kopiering!";
+      setTimeout(() => {
+        button.textContent = "Kopier";
+      }, 2000);
+    }
   });
 });
-
+});
 loadOptions();
