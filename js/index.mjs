@@ -19,7 +19,9 @@ async function loadOptions() {
 
   allCars = data;
 
-  const makes = [...new Set(data.map((car) => car.make))];
+  const makes = [...new Set(data.map((car) => car.make))].sort((a, b) =>
+  a.localeCompare(b, 'no', { sensitivity: 'base' })
+);
 
   makes.forEach((make) => {
     const option = document.createElement("option");
@@ -34,10 +36,10 @@ makeSelect.addEventListener("change", () => {
   modelSelect.innerHTML = '<option value="">Velg bilmodell</option>';
 
   const models = [
-    ...new Set(
-      allCars.filter((c) => c.make === selectedMake).map((car) => car.model)
-    ),
-  ];
+  ...new Set(
+    allCars.filter((c) => c.make === selectedMake).map((car) => car.model)
+  ),
+].sort((a, b) => a.localeCompare(b, 'no', { sensitivity: 'base' }));
 
   models.forEach((model) => {
     const option = document.createElement("option");
