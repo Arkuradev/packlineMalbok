@@ -3,6 +3,8 @@ import { publicKey, projectId } from "./user/utils/constants.mjs";
 
 const supabase = createClient(projectId, publicKey);
 
+
+
 const makeSelect = document.getElementById("make-select");
 const modelSelect = document.getElementById("model-select");
 const carList = document.getElementById("car-list");
@@ -75,6 +77,12 @@ modelSelect.addEventListener("change", async () => {
     const item = document.createElement("div");
     item.className = "relative bg-white p-4 border rounded shadow";
 
+    const makeSlug = car.make.toLowerCase().replaceAll(" ", "-");
+const modelSlug = car.model.toLowerCase().replaceAll(" ", "-");
+const fileName = `${makeSlug}-${modelSlug}.jpg`;
+
+const imageUrl = `${projectId}/storage/v1/object/public/car-images/${fileName}`;
+
     const infoText = `
 ${car.make}
 ${car.model}
@@ -107,6 +115,13 @@ Mal nummer: ${car.id}`.trim();
     <input type="text" placeholder="Farge + fargekode" 
     class="paint-code hidden mt-1 p-2 border rounded w-full text-sm" />
     </div>
+
+    <img 
+  src="${imageUrl}" 
+  alt="Bilde av ${car.make} ${car.model}" 
+  class="absolute bottom-2 right-2 w-40 h-auto object-contain opacity-80"
+  onerror="this.style.display='none';"
+/>
 
     <button class="copy-btn absolute bg-gray-600 hover:bg-gray-700 rounded py-2 px-4 text-white top-2 right-2 text-sm" data-info="${infoText.replaceAll(
       '"',
