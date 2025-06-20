@@ -122,9 +122,11 @@ Mal nummer: ${car.id}`.trim();
         : ""
     }
   `;
-  setupEditButtons();
+  
 
     carList.appendChild(item);
+
+    setupEditButtons();
 
     item.querySelector(".paint-toggle").addEventListener("change", (e) => {
     const input = item.querySelector(".paint-code");

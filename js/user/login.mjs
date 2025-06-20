@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", () => {
       console.log(error.message);
     } else {
       localStorage.setItem("supabaseSession", JSON.stringify(data.session));
-      alert("You have successfully logged in!");
+      alert("Du er logget inn!");
       window.location.href = "/index.html";
     }
   });
