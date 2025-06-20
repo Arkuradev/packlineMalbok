@@ -12,15 +12,17 @@
   </head>
   <body>
     <header>
-      <nav class="bg-white shadow mb-6">
+      <nav class="bg-white shadow-xl mb-6">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div class="flex justify-between h-16">
             <div class="flex items-center space-x-6">
-              <a
-                href="index.html"
-                class="text-lg font-semibold text-gray-800 hover:text-blue-600"
-                >Hjem</a
-              >
+              <a href="index.html" class="inline-block" aria-label="Hjem">
+                <img
+                  src="/images/packline.png"
+                  alt="Logo"
+                  class="h-10 w-auto"
+                />
+              </a>
               <a
                 href="user/dashboard.html"
                 class="text-gray-700 hover:text-blue-600 hidden"
@@ -44,66 +46,87 @@
       <h1 class="text-2xl font-bold mb-4">Finn Takboks Mal:</h1>
 
       <form id="car-search-form" class="space-y-4 mb-6">
-        <select id="make-select" required class="w-full p-2 border rounded">
+        <label for="make-select" class="sr-only">Velg bilmerke</label>
+        <select
+          id="make-select"
+          required
+          class="w-full p-2 bg-gray-200 border rounded"
+        >
           <option value="">Velg bilmerke</option>
         </select>
-
-        <select id="model-select" required class="w-full p-2 border rounded">
+        <label for="model-select" class="sr-only">Velg bilmodell</label>
+        <select
+          id="model-select"
+          required
+          class="w-full bg-gray-200 p-2 border rounded"
+        >
           <option value="">Velg bilmodell</option>
         </select>
       </form>
-      <input 
-  type="text" 
-  id="search-input" 
-  placeholder="Søk etter bil, modell, takboks..." 
-  class="mb-4 w-full p-2 border rounded"
-/>
+      <label for="search-input" class="sr-only">Søk etter bil, modell...</label>
+      <input
+        type="text"
+        id="search-input"
+        placeholder="Søk etter bil, modell, takboks..."
+        class="mb-4 w-full p-2 border rounded bg-gray-200"
+      />
       <div id="car-list" class="space-y-4"></div>
     </div>
 
-   <div id="edit-modal" class="fixed inset-0 z-50 hidden bg-black/50 flex items-center justify-center">
-  <div class="bg-white p-6 rounded-lg shadow-lg w-full max-w-md">
-    <h2 class="text-lg font-semibold mb-4">Rediger målinger</h2>
-    <form id="edit-form" class="space-y-4">
-      <input type="hidden" id="edit-id" />
+    <div
+      id="edit-modal"
+      class="fixed inset-0 z-50 hidden bg-black/50 flex items-center justify-center"
+    >
+      <div class="bg-white p-6 rounded-lg shadow-lg w-full max-w-md">
+        <h2 class="text-lg font-semibold mb-4">Rediger målinger</h2>
+        <form id="edit-form" class="space-y-4">
+          <input type="hidden" id="edit-id" />
 
-      <label class="block text-sm">
-        CC:
-        <input type="text" id="edit-cc" class="w-full p-2 border rounded" />
-      </label>
+          <label class="block text-sm">
+            CC:
+            <input type="text" id="edit-cc" class="w-full p-2 border rounded" />
+          </label>
 
-      <label class="block text-sm">
-        CB:
-        <input type="text" id="edit-cb" class="w-full p-2 border rounded" />
-      </label>
+          <label class="block text-sm">
+            CB:
+            <input type="text" id="edit-cb" class="w-full p-2 border rounded" />
+          </label>
 
-      <label class="block text-sm">
-        Front:
-        <input type="text" id="edit-front" class="w-full p-2 border rounded" />
-      </label>
+          <label class="block text-sm">
+            Front:
+            <input
+              type="text"
+              id="edit-front"
+              class="w-full p-2 border rounded"
+            />
+          </label>
 
-      <label class="block text-sm">
-        Bak:
-        <input type="text" id="edit-bak" class="w-full p-2 border rounded" />
-      </label>
+          <label class="block text-sm">
+            Bak:
+            <input
+              type="text"
+              id="edit-bak"
+              class="w-full p-2 border rounded"
+            />
+          </label>
 
-      <div class="flex justify-end gap-4 pt-2">
-        <button
-          type="button"
-          id="cancel-edit"
-          class="text-gray-600 hover:underline"
-        >
-          Avbryt
-        </button>
-        <button
-          type="submit"
-          class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded"
-        >
-          Lagre
-        </button>
+          <div class="flex justify-end gap-4 pt-2">
+            <button
+              type="button"
+              id="cancel-edit"
+              class="text-gray-600 hover:underline"
+            >
+              Avbryt
+            </button>
+            <button
+              type="submit"
+              class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded"
+            >
+              Lagre
+            </button>
+          </div>
+        </form>
       </div>
-    </form>
-  </div>
-</div>
+    </div>
   </body>
 </html>
