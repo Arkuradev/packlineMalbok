@@ -85,6 +85,7 @@ Bak: ${car.bak || "N/A"}
 Mal nummer: ${car.id}`.trim();
 
 
+// Fiks denne, burde ikke bruke innerHTML på data henting.
 
     item.innerHTML = `
     <a href="measurements.html?id=${car.id}" class="block mb-2 hover:underline">
