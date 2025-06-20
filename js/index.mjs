@@ -75,7 +75,7 @@ modelSelect.addEventListener("change", async () => {
 
   data.forEach((car) => {
     const item = document.createElement("div");
-    item.className = "relative bg-white p-4 border rounded shadow";
+    item.className = "relative bg-white p-4 border rounded shadow hover:shadow-xl";
 
     const makeSlug = car.make.toLowerCase().replaceAll(" ", "-");
 const modelSlug = car.model.toLowerCase().replaceAll(" ", "-");
@@ -113,7 +113,7 @@ Mal nummer: ${car.id}`.trim();
     Lakkeres?
     </label>
     <input type="text" placeholder="Farge + fargekode" 
-    class="paint-code hidden mt-1 p-2 border rounded w-full text-sm" />
+    class="paint-code hidden mt-1 p-2 border rounded  text-sm" />
     </div>
 
     <img 
