@@ -20,18 +20,16 @@ export function setupSearch(inputElement, carListElement) {
       }
 
       const { data, error } = await supabase
-        .from("cars")
-        .select("*")
-        .or(
-          `make.ilike.%${query}%,model.ilike.%${query}%,roofbox.ilike.%${query}%,takfeste.ilike.%${query}%,cc.ilike.%${query}%,cb.ilike.%${query}%,front.ilike.%${query}%,bak.ilike.%${query}%`
-        );
+  .from("cars")
+  .select("*")
+  .or(`make.ilike.%${query}%,model.ilike.%${query}%,roofbox.ilike.%${query}%,takfeste.ilike.%${query}%`);
 
       if (error) {
         carListElement.innerHTML = `<p class="text-red-500">Feil ved søk: ${error.message}</p>`;
         return;
       }
-
-      renderCarList(data);
+      const session = (await supabase.auth.getSession()).data.session;
+      renderCarList(data, session, carListElement);
     }, 400);
   });
 }
