@@ -81,7 +81,19 @@
         <h2 class="text-lg font-semibold mb-4">Rediger målinger</h2>
         <form id="edit-form" class="space-y-4">
           <input type="hidden" id="edit-id" />
-
+          <select
+          id="edit-roofboxes"
+          name="roofboxes"
+          required
+          class="w-full p-2 border rounded"
+        >
+          <option value="Summit-T A-boks">Summit T A-variant</option>
+          <option value="Summit-T B-boks">Summit T B-variant</option>
+          <option value="Summit-XLT A-boks">Summit XLT A-variant</option>
+          <option value="Summit-XLT B-boks">Summit XLT B-variant</option>
+          <option value="Premium-XLT A-boks">Premium XLT A-variant</option>
+          <option value="Premium-XLT B-boks">Premium XLT B-variant</option>
+        </select>
           <label class="block text-sm">
             CC:
             <input type="text" id="edit-cc" class="w-full p-2 border rounded" />

@@ -18,6 +18,7 @@ export function setupEditButtons() {
       }
 
       document.getElementById("edit-id").value = data.id;
+      document.getElementById("edit-roofboxes").value = data.roofbox;
       document.getElementById("edit-cc").value = data.cc || "";
       document.getElementById("edit-cb").value = data.cb || "";
       document.getElementById("edit-front").value = data.front || "";
@@ -59,6 +60,7 @@ export function setupEditFormHandlers() {
 
     const id = document.getElementById("edit-id").value;
     const updates = {
+      roofbox: document.getElementById("edit-roofboxes").value,
       cc: document.getElementById("edit-cc").value,
       cb: document.getElementById("edit-cb").value,
       front: document.getElementById("edit-front").value,
