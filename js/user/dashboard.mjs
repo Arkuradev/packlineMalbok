@@ -25,7 +25,7 @@ form.addEventListener("submit", async (e) => {
   const year = parseInt(document.getElementById("year").value, 10);
   const takfeste = document.getElementById("takfeste").value.trim();
   const cc = document.getElementById("cc").value.trim();
-  const cb = document.getElementById("cc").value.trim();
+  const cb = document.getElementById("cb").value.trim();
   const front = document.getElementById("front").value.trim();
   const bak = document.getElementById("bak").value.trim();
 
