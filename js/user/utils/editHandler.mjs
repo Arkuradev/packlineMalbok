@@ -61,6 +61,7 @@ export function setupEditFormHandlers() {
     const id = document.getElementById("edit-id").value;
     const updates = {
       roofbox: document.getElementById("edit-roofboxes").value,
+      takstativ: document.getElementById("edit-takstativ").value,
       cc: document.getElementById("edit-cc").value,
       cb: document.getElementById("edit-cb").value,
       front: document.getElementById("edit-front").value,
@@ -76,8 +77,8 @@ export function setupEditFormHandlers() {
 
     document.getElementById("edit-modal").classList.add("hidden");
     alert("Mal oppdatert!");
-    setTimeout(() => {
+    /* setTimeout(() => {
       window.location.reload();
-    }, 500);
+    }, 500); */
   });
 }

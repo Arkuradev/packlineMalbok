@@ -11,11 +11,13 @@ export function setupCopyButtons() {
 
       const model = details[0]?.textContent?.replace(`${make} `, "") || "N/A";
       const roofbox = details[1]?.textContent?.split(":")[1]?.trim() || "N/A";
+      const takstativ = details[2]?.textContent?.split(":")[1]?.trim() || "N/A"
       const cc = details[3]?.textContent?.split(":")[1]?.trim() || "N/A";
       const cb = details[4]?.textContent?.split(":")[1]?.trim() || "N/A";
       const front = details[5]?.textContent?.split(":")[1]?.trim() || "N/A";
       const bak = details[6]?.textContent?.split(":")[1]?.trim() || "N/A";
       const id = details[7]?.textContent?.split(":")[1]?.trim() || "N/A";
+
 
       const paintInput = card.querySelector(".paint-code");
       const paintCode =
@@ -23,10 +25,13 @@ export function setupCopyButtons() {
           ? paintInput.value.trim()
           : null;
 
+// Skift på denne, fjern takfeste fra copy/paste og bruk takstativ isteden.
+
       let infoText = `
 ${make}
 ${model}
 ${roofbox}
+${takstativ}
 ${cc} / ${cb}
 Front: ${front}
 Bak: ${bak}

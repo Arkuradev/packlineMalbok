@@ -46,13 +46,13 @@
       <h1 class="text-2xl font-bold mb-4">Add Car Measurements</h1>
 
       <form id="car-form" class="space-y-4">
-        <label for="roofboxes" class="block text-sm">Takboks:</label>
+        <label for="roofboxes" class="block text-sm">Takboks:
         <select
           id="roofboxes"
           name="roofboxes"
           required
           class="w-full p-2 border rounded"
-        >
+        ></label>
           <option value="Summit-T A-boks">Summit T A-variant</option>
           <option value="Summit-T B-boks">Summit T B-variant</option>
           <option value="Summit-XLT A-boks">Summit XLT A-variant</option>
@@ -60,68 +60,85 @@
           <option value="Premium-XLT A-boks">Premium XLT A-variant</option>
           <option value="Premium-XLT B-boks">Premium XLT B-variant</option>
         </select>
-        <label for="make" class="block text-sm">Bil:</label>
+        <label for="make" class="block text-sm">Bil:
         <input
           id="make"
           type="text"
           placeholder="Car Make (e.g., Audi, Volvo)"
           required
           class="w-full p-2 mb-2 border rounded"
-        />
-        <label for="model">Modell:</label>
+        /></label>
+        <label for="model">Modell:
         <input
           id="model"
           type="text"
           placeholder="Model (e.g., Etron, EX90)"
           required
           class="w-full p-2 mb-2 border rounded"
-        />
-        <label for="year">Års modell:</label>
+        /></label>
+        <label for="year">Års modell:
         <input
           id="year"
           type="number"
           placeholder="Year (e.g., 2024)"
           required
           class="w-full p-2 mb-2 border rounded"
-        />
-        <label for="takfeste">Takfeste:</label>
-        <input
+        /></label>
+        <label for="takstativ">Takstativ:
+          <select
+          id="takstativ"
+          name="takstativ"
+          required
+          class="w-full p-2 border rounded"
+        >
+          <option value="Yakima">Yakima</option>
+          <option value="Thule">Thule</option>
+          <option value="Orginal">Orginal</option>
+        </label>
+      </select>
+
+        <label for="takfeste">Takfeste:
+          <input
           id="takfeste"
           type="text"
           placeholder="Flushrails, Faste Festepunkter..."
           required
-          class="w-full p-2 mb-2 border rounded"
-        />
-        <label for="cc">CC:</label>
+          class="w-full p-2 mt-2 mb-2 border rounded"
+        /></label>
+        
+        
+        <label for="cc">CC:
         <input
           id="cc"
           type="number"
           placeholder="750"
           class="w-full p-2 mb-2 border rounded"
-        />
-        <label for="CB">CB:</label>
+        /></label>
+        <label for="CB">CB:
         <input
           id="cb"
           type="number"
           placeholder="600"
           class="w-full p-2 mb-2 border rounded"
-        />
-        <label for="front">Mal Front:</label>
+        /></label>
+        <label for="front">Mal Front:
         <input
           id="front"
           type="text"
           placeholder="10 med Fot"
           required
           class="w-full p-2 mb-2 border rounded"
-        />
-        <label for="bak">Mal Bak:</label>
-        <input
+        /></label>
+        <label for="bak">Mal Bak:
+          <input
           id="bak"
           type="text"
           placeholder="20 med Fot"
           required
           class="w-full p-2 mb-2 border rounded"
         />
+        </label>
+        
         <button type="submit" class="bg-blue-600 text-white p-2 w-full rounded">
           Add Measurements
         </button>

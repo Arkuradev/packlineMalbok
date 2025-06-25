@@ -19,18 +19,22 @@ export function renderCarList(data, session, container) {
 ${car.make}
 ${car.model}
 ${car.roofbox || "N/A"}
+${car.takstativ || "N/A"} 
 ${car.cc || "N/A"} / ${car.cb || "N/A"}
 Front: ${car.front || "N/A"}
 Bak: ${car.bak || "N/A"}
 Mal nummer: ${car.id}`.trim();
 
+
+// <p class="text-sm text-gray-700">Takfeste: ${car.takfeste || "N/A"}</p>
     item.innerHTML = `
       <a href="measurements.html?id=${
         car.id
       }" class="block mb-2 hover:underline">
         <p><strong>${car.make}</strong> ${car.model} (${car.year || ""})</p>
         <p class="text-sm text-gray-700">Takboks: ${car.roofbox || ""}</p>
-        <p class="text-sm text-gray-700">Takfeste: ${car.takfeste || "N/A"}</p>
+        <p class="text-sm text-gray-700">Takstativ: ${car.takstativ || "N/A"}</p>
+        
         <p class="text-sm text-gray-700">CC: ${car.cc || "N/A"}</p>
         <p class="text-sm text-gray-700">CB: ${car.cb || "N/A"}</p>
         <p class="text-sm text-gray-700">Front: ${car.front || "N/A"}</p>

@@ -24,6 +24,7 @@ form.addEventListener("submit", async (e) => {
   const model = document.getElementById("model").value.trim();
   const year = parseInt(document.getElementById("year").value, 10);
   const takfeste = document.getElementById("takfeste").value.trim();
+  const takstativ = document.getElementById("takstativ").value.trim();
   const cc = document.getElementById("cc").value.trim();
   const cb = document.getElementById("cb").value.trim();
   const front = document.getElementById("front").value.trim();
@@ -43,6 +44,7 @@ form.addEventListener("submit", async (e) => {
       cb,
       front,
       bak,
+      takstativ,
       updated_by: userId,
     },
   ]);
@@ -54,5 +56,6 @@ form.addEventListener("submit", async (e) => {
     message.textContent = "✅ Car measurement added successfully!";
     message.className = "text-green-600 mt-4";
     form.reset();
+    
   }
 });
