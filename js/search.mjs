@@ -1,5 +1,5 @@
 // searchCars.mjs
-import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm";
+import { createClient } from "https://esm.sh/@supabase/supabase-js@2.48.0";
 import { publicKey, projectId } from "./user/utils/constants.mjs";
 import { renderCarList } from "./renderCars.mjs"; // optional shared renderer
 
